@@ -1,0 +1,271 @@
+*****************************************************************************Assignment 1.1 ******************************************************************************************************
+
+1) Write a function (def is_valid_pin(pin_code)) which should return whether or not a string represents a valid Indian pin code.
+   Consider a valid pin code is any string consisting of exactly 6 digits.
+--->>
+    
+     def is_valid_pin(pin_code):
+         pin=input("Enter the pin-code\n")
+         if len(pin_code) == len(pin):
+            return True                                                         //here True=Valid
+         else:
+            return False                                                        //false=Invalid
+
+
+     print(is_valid_pin("431143"))                    //User given pin-code length is 6 digits
+
+
+
+
+2) Write a function is_member that takes a value(i.e.a number,string etc) x and a list of values a, and returns a True if x member of a,False otherwise.
+(Note that this is a exactly what the in operator does,but for the sake of the exercise u should pretend python did not have this operator)
+---->>
+      def is_member(x,number_list):
+         if x in number_list:
+             return True
+         else:
+             return False
+        
+
+
+     number_list=['1','2','3','4','5']
+     x=input("Enter the number :\n")
+     print(is_member(x,number_list))
+
+        
+
+
+
+3) Define a function overlapping() that takes two lists and returns True if they have at least one member in common, False otherwise. 
+   You may use your is_member() function, or the in operator, but for the sake of the exercise, you should (also) write it using two 
+   nested for-loops. 
+--->>
+    
+     
+     def overlapping():
+         for i in list1:
+             for j in list2:
+                if i==j:
+                  return True
+                else: 
+                  return False
+   
+
+     list1 = ['physics', 'chemistry', 'Biology','Mathematics']
+     list2 = [1990, 1995, 1997, 2000]
+     print(overlapping())
+        
+
+
+
+4) Write a program that maps a list of words into a list of integers representing the lengths of the corresponding words. 
+--->>  
+     planets = ["Earth", "Mars", "Saturn", "Jupiter"]
+     print("Length of Given each word in list :")
+     for i in planets:
+        print(len(i))
+ 
+
+
+5) Write a function find_longest_word() that takes a list of words and returns the length of the longest one. 
+--->>
+    def main ():
+    text = input("Please input a List of words to evaluate: ")
+
+    longest = 0
+
+    for words in text.split():
+           if len(words) > longest:
+                  longest = len(words)
+    print ("The longest word is", words, "with lenght", longest)
+
+
+    main()         //call to the main function
+
+
+
+6) Write a version of a palindrome recognizer that also accepts phrase palindromes such as "Go hang a salami I'm a lasagna hog.", 
+   "Was it a rat I saw?",
+   "Step on no pets", "Sit on a potato pan, Otis", "Lisa Bonet ate no basil", "Satan, oscillate my metallic sonatas",
+  "Rise to vote sir", or the exclamation 
+    "Dammit, I'm mad!". Note that punctuation, capitalization, and spacing are usually ignored. 
+--->> 
+   //In python,a regular expression is denoted as RE are imported through re module.Python supports regular expression through libraries.
+   //Regular expression is a special sequence of characters that helps u match or find other strings or sets of strings using a specialized syntax held in a pattern 
+    
+    import re 
+    def palindrome_recognizer(string):
+        string_list = []
+        string=re.sub('[^a-zA-Z]','',string).lower()                       //special char,symbols,upper char.lower char all r converted into lower char                                       
+        for str in (string):
+            string_list.insert(0, str)
+            if string==(''.join(string_list)):
+               return True
+            else:
+               return  False
+   
+
+
+    a=palindrome_recognizer("Go hang a salami I'm a lasagna hog.")
+    print(a)
+    b=palindrome_recognizer("Was it a rat I saw?")
+    print(b)
+    c=palindrome_recognizer("Step on no pets")
+    print(c)
+    d=palindrome_recognizer("Sit on a potato pan, Otis")
+    print(d)
+    e=palindrome_recognizer("I am testing")
+    print(e)
+    f=palindrome_recognizer("Lisa Bonet ate no basil", "Satan")
+    print(f)
+    g=palindrome_recognizer("Rise to vote sir")
+    print(g)
+    h=palindrome_recognizer("Dammit, I'm mad!")
+    print(h)
+   
+
+   
+
+7) Write a function char_freq() that takes a string and builds a frequency listing of the characters contained in it.
+ Represent the frequency listing as a Python dictionary. Try it with something like char_freq("abbabcbdbabdbdbabababcbcbab"). 
+--->>
+        def frequency_count(string):
+          string_freq={}                                                              //we want output in dictionary
+          for i in string:
+             if i in string_freq:
+                string_freq[i]+=1
+             else:
+                string_freq[i]=1
+          print(str(string_freq))
+    
+       string ='altran'
+       print("Frequency of all characters in the string : ")
+       print(frequency_count(string))
+
+
+
+8) In cryptography, a Caesar cipher is a very simple encryption techniques in which each letter in the plain text is replaced by a letter some fixed number 
+of positions down the alphabet. For example, with a shift of 3, A would be replaced by D, B would become E, and so on. The method is named after Julius Caesar, 
+who used it to communicate with his generals. ROT-13 ("rotate by 13 places") is a widely used example of a Caesar cipher where the shift is 13. In Python, the key
+ for ROT-13 may be represented by means of the following dictionary: 
+key = {'a':'n', 'b':'o', 'c':'p', 'd':'q', 'e':'r', 'f':'s', 'g':'t', 'h':'u', 'i':'v', 'j':'w', 'k':'x', 'l':'y', 'm':'z', 'n':'a', 'o':'b', 'p':'c', 'q':'d', 
+'r':'e', 's':'f', 't':'g', 'u':'h', 'v':'i', 'w':'j', 'x':'k', 'y':'l', 'z':'m', 'A':'N', 'B':'O', 
+'C':'P', 'D':'Q', 'E':'R', 'F':'S', 'G':'T', 'H':'U', 'I':'V', 'J':'W', 'K':'X', 'L':'Y', 'M':'Z', 'N':'A', 'O':'B', 'P':'C', 'Q':'D', 'R':'E', 'S':'F', 'T':'G',
+ 'U':'H', 'V':'I', 'W':'J', 'X':'K', 'Y':'L', 'Z':'M'} 
+Your task in this exercise is to implement an encoder/decoder of ROT-13. Once you're done, you will be able to read the following secret message: 
+Pnrfne pvcure? V zhpu cersre Pnrfne fnynq! 
+Note that since English has 26 characters, your ROT-13 program will be able to both encode and decode texts written in English. 
+--->>
+   import string
+   def  ROT_13(message):
+      key = {'a': 'n', 'b': 'o', 'c': 'p', 'd': 'q', 'e': 'r', 'f': 's', 'g': 't', 'h': 'u',
+            'i': 'v', 'j': 'w', 'k': 'x', 'l': 'y', 'm': 'z', 'n': 'a', 'o': 'b', 'p': 'c',
+            'q': 'd', 'r': 'e', 's': 'f', 't': 'g', 'u': 'h', 'v': 'i', 'w': 'j', 'x': 'k',
+            'y': 'l', 'z': 'm', 'A': 'N', 'B': 'O', 'C': 'P', 'D': 'Q', 'E': 'R', 'F': 'S',
+            'G': 'T', 'H': 'U', 'I': 'V', 'J': 'W', 'K': 'X', 'L': 'Y', 'M': 'Z', 'N': 'A',
+            'O': 'B', 'P': 'C', 'Q': 'D', 'R': 'E', 'S': 'F', 'T': 'G', 'U': 'H', 'V': 'I',
+            'W': 'J', 'X': 'K', 'Y': 'L', 'Z': 'M'}
+      ROT_13_message=[]
+      for words in message:
+         if words ==" ":
+             ROT_13_message.append(words)
+         elif words  in string.punctuation:
+             ROT_13_message.append(words)
+         else:
+             ROT_13_message.append(key[words])
+      return(''.join(ROT_13_message))
+    
+    
+   message='Pnrfne pvcure? V zhpu cersre Pnrfne fnynq!'
+   print(ROT_13(message))
+
+
+     
+
+
+
+9) Write a python program that prints the frequency of all the unique words. You can have a list of words or you can take data from the user. 
+--->>
+
+   def frequency_count(string):
+     string_list=string.split()
+     string_freq=[]                                                                    //output wiil be in list
+     for i in string_list:
+         string_freq.append(string_list.count(i))
+     print(str(string_list))
+     print(str(string_freq))
+    
+  string ='physics chemistry Biology Mathematics this is best subject for HSC exam, And Mathematics is my favourite '
+  print("Frequency of all words : ")
+  print(frequency_count(string))
+
+    
+
+    
+
+10) Write a function which accepts a �list of documents� and a keyword (that is to be searched). 
+And returns list of the index values from the original list for all documents containing the keyword. 
+For your first version you can consider the �list of documents� to be a list of strings and in your second version consider the �list of documents� to be a list of text filenames. 
+def my_word_search(my_doc_list, my_keyword): 
+""" 
+Takes a list of strings and a keyword. 
+Returns list of the index values from the original list for all documents (strings) 
+containing the keyword. 
+Example: 
+doc_list = ["The Learn Golang Challenge School.", "They bought a scooter", "Schools"] 
+>>> word_search(doc_list, 'school') 
+>>> [0] 
+""" 
+Also note the constraints below, 
+* Do not include documents where the keyword string shows up only as a part of a larger word. For example, if the lookup was for the keyword �closed�, 
+you would not include the string �enclosed.� 
+* Do not distinguish upper case from lower case letters. � 
+* Do not let punctuation marks (like periods, commas, semicolons) affect what is matched. �It is closed.� would be included when the keyword is �closed�. 
+You can define a set of punctuation marks. 
+--->>
+   def my_word_search(my_doc_list, my_keyword):
+    word_list=[]
+    for i in my_doc_list:
+        i=my_keyword
+        print(my_doc_list[i])
+
+
+   my_doc_list = ["The Learn Golang Challenge School.", "They bought a scooter", "School"]
+   word=input("Enter the word which u want to search :")
+   print(my_word_search(my_doc_list,word))
+
+
+
+
+
+11) Extend the function written for Q 10 to support multiple keywords, instead of one. In this case the function returns a dictionary with keyword as the �key� and
+ the list of indexes as the value. 
+def my_multi_word_search(doc_list, keywords): 
+""" 
+Takes list of strings and a list of keywords. 
+Returns a dictionary where each key is a keyword, and the value is a list of indices 
+(from doc_list) of the documents (that is strings here) containing that keyword 
+>>> doc_list = ["He is learning Scooter driving", "They bought a car and a scooter", "they are singing"] 
+>>> keywords = ['scooter', 'they'] 
+>>> multi_word_search(doc_list, keywords) 
+{'scooter': [0, 1], 'they': [1, 2]} 
+--->>
+
+
+    def my_word_search(my_doc_list,word_list):
+    word_list1=[]
+    for i in my_doc_list:
+        i=my_keyword
+        print(my_doc_list[i])
+
+
+   my_doc_list = ["The Learn Golang Challenge School.", "They bought a scooter", "School"]
+   word_list=['scooter','they']
+   print(my_word_search(my_doc_list,word_list))
+
+
+
+
+
+
+

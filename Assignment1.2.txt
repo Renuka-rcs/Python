@@ -1,0 +1,268 @@
+***********************************************************************************Assignment 1.2******************************************************************************
+
+
+1) Define a function max() that takes two numbers as arguments and returns the largest of them. Use the if-then-else construct available in Python. 
+--->>
+
+     def max(number1,number2):
+        if number1 > number2:
+           largest=number1
+        else:
+           largest=number2
+     return largest 
+     
+     number1=input("Enter the number1 : ")
+     number2=input("Enter the number2 : ")
+     print("The largest number is : ")
+     print(max(number1,number2)
+
+
+2) Write a python function to test, if a given number (passed as argument) is a perfect number (https://en.wikipedia.org/wiki/Perfect_number)
+--->>
+    def perfect_number(n):
+       sum = 0
+       for x in range(1, n):
+          if n % x == 0:
+            sum += x
+       return sum == n
+
+
+    print(perfect_number(6)) 
+
+   output-- True or False
+
+  
+3) An isogram(also known as non-pattern word) is a loglogical term for a word or phrase without repeating letter. Write a python function to test,if a given 
+   word(passed as a argument)is an perfect isogram
+--->>
+       def is_isogram(string):
+          string = string.lower()
+          for char in string:
+              if string.count(char) > 1:
+                  return False
+          return True
+   
+   
+      string=input("Enter the String \n")
+      print(is_isogram(string))
+
+
+4) Implement the function given below: 
+  def elementwise_greater_than(mylist, threshold): 
+  """Return a list with the same length as mylist, where the value at index i is 
+  True if L[i] is greater than threshold, and False otherwise. 
+  >>> elementwise_greater_than([1, 2, 3, 4], 2) 
+  [False, False, True, True] 
+  """
+--->>
+
+       
+      
+
+
+
+
+5) Define a function that computes the length of a given list or string. (It is true that Python has the len() function built in, but you need to writing it yourself.)
+ --->>
+      def len_string():
+         string=input("Enter the String\n")
+         for i in string:
+             count+=i
+         print(count)   
+ 
+
+6) Write a function which accepts a word and a list of words. Return the anagrams (https://en.wikipedia.org/wiki/Anagram) of that word from the given list (as a list or return empty 
+   list if not found) Like print(my_anagram("ant", ["tan", "stand", "at"])) prints [�tan]
+--->>    
+    
+       count=0
+       list1=["tan", "stand", "at"]
+       word=input("Enter the word :\n")
+       def my_anagram(list1,word):
+          for i in list1:
+             for j in word:
+                if i==j:
+                   count=count+1
+
+       if count==len(list1):
+          print(list1[count])
+       else:
+         print(list1[count])
+
+       print(my_anagram(list1,word))
+
+
+
+   
+     
+7) Write a function that takes a character (i.e. a string of length 1) and returns True if it is a vowel,False otherwise. 
+--->>
+      def is_vowel():
+         vowels = 'aeiou'
+         if char in vowels:
+            return True
+         else:
+            return False
+ 
+
+  //  print(is_vowel('z'))                            //check this
+  //   print(is_vowel('u'))
+
+     
+
+
+8) Define a function sum() and a function multiply() that sums and multiplies (respectively) all the numbers in a list of numbers.
+   For example, sum([1, 2, 3, 4, 5]) should return 15, and  multiply([1, 2, 3, 4]) should return 24.
+--->>
+     def sum(list1):
+        sum = 0
+        for  number in list1:
+           sum=sum+number
+        return sum
+    
+
+    list1=sum([1,2,3,4])
+    print(list1)
+
+
+   def multiply(list2):
+       mul = 1
+       for number in list2:
+         mul = mul * number
+       return mul
+
+
+   list2= multiply([1, 2, 3, 4])
+   print(list2)
+
+
+
+
+9) Define a function reverse() that computes the reversal of a string. For example, 
+   reverse("I am testing") should return the string "gnitset ma I".
+--->>
+    
+      def reverse(string):
+          str_str=""
+          x=len(string)
+          while x>0:
+             x-=1
+            str_str+=string[x]
+          return str_str
+            
+            
+    string=input("Enter the string\n")
+    print(reverse(string))
+
+        
+
+
+10) Write a python function to find the digital root of a number.(To find digital root, you need to add the digits of a number till you get a single digit number.
+   That is say you have 56789. In the first iteration you add 5, 6, 7, 8 and 9. 
+   The result is 35.In the second iteration you add 3 and 5.You get 8. So 8 is the answer.)
+--->> 
+
+     num = input("Enter your number: ")
+     print(num, "\n")
+
+     def digital_root(num):
+        if len(num) == 1:
+           return num 
+        else:
+           sum = 0
+           for i in num:
+              sum += int(i)
+           num = str(sum)
+           return digital_root(num)
+        
+     print("The digital root of ", num, " is: ", digital_root(num))
+
+
+11) Define a function is_palindrome() that recognizes palindromes (i.e. words that look the same written backwards). For example, is_palindrome("radar") should return True. 
+--->>
+                   
+           
+                   //firstly reverse the string
+             def reverse(s): 
+	        return s[::-1]              //go to the last character
+
+             def isPalindrome(s): 
+	           // Call to the reverse function 
+	        rev = reverse(s) 
+
+	         // Checking if both string are equal or not 
+	        if (s == rev): 
+		   return True
+       	     return False
+
+            
+             s = "malayalam"
+             ans = isPalindrome(s) 
+
+             if ans == 1: 
+	        print("Yes") 
+             else: 
+	        print("No") 
+
+
+
+
+12) Define a simple "spelling correction" function correct() that takes a string and sees to it that 1) two or more occurrences of the space character is compressed into one, and 2)
+  inserts an extra space after a period if the period is directly followed by a letter. E.g. correct("This is very funny and cool.Indeed!") should return "This is very funny and cool. 
+   Indeed!". 
+--->>
+       import re
+       def correct(string):
+       strinfo_a=re.compile(r'[\s\,]+')
+       space=strinfo_a.sub(" ",string)
+       period='. '.join(space.split('.'))
+       return period
+    
+    
+      string="This   is  very funny  and    cool.Indeed!"
+      print(correct(string))
+
+
+     
+
+
+
+13) "99 Bottles of Beer" is a traditional song in the United States and Canada. It is popular to sing on long trips, as it has a very repetitive format which is easy to memorize, and 
+     can take a long time to sing. The song's simple lyrics are as follows: 
+     99 bottles of beer on the wall, 99 bottles of beer. Take one down, pass it around, 98 bottles of beer on the wall. 
+     The same verse is repeated, each time with one fewer bottle. The song is completed when the singer or singers reach zero. 
+     Your task here is write a Python program capable of generating all the verses of the song. 
+--->>
+     
+     def Bottles_of_Beer(number):
+         bottles=number
+         while  bottles > 0:
+            print('{0} bottles of beer on the wall,{0} bottles of beer'.format(bottles))
+            print('Take one down,pass it around,{} bottles of beer on the wall'.format(bottles-1))
+            bottles=bottles-1
+
+     number=input("Enter the number as per ur wish :\n")
+     Bottles_of_Beer(number)
+
+
+14) Write a function which accepts a string and returns a list of all possible 
+    permutations of the given string in python. 
+--->>
+      
+      def permute_str(string):
+        if len(string) == 0:
+           return ['']
+        prev_list = permute_str(string[1:len(string)])
+        next_list = []
+        for i in range(0,len(prev_list)):
+           for j in range(0,len(string)):
+              new_string = prev_list[i][0:j]+string[0]+prev_list[i][j:len(string)-1]
+              if new_string not in next_list: 
+                 next_list.append(new_string)
+        return next_list
+
+
+     string=input("Enter the string : \n")
+     print(permute_str(string))
+
+
